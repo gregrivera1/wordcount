@@ -11,15 +11,13 @@ public class WordCounter {
 		single.countSingleThread("hi hi hi hello hello hi");
 		List<String> wordDocsList = new ArrayList<String>();
 		
-		wordDocsList.add("hi hi hi hi h a b c d asdf adsf adsf asdf asf asdf asf adf ad fa f as fasf sf dfa dfa dfadfa df as fa fa s fs fa df ad fadsf d fs f");
+		wordDocsList.add("hi hi hi hi h a b cfs f");
 		wordDocsList.add("he he he he");
 		wordDocsList.add("ha ha ha ha");
 		wordDocsList.add("ho ho ho ho");
 		wordDocsList.add("hi hi hi hi");
 		
 		WCMultiThread  multiWC  = new WCMultiThread(wordDocsList);
-		System.out.println("Starting");
-		System.out.println("DONE");
 		ConcurrentHashMap<String,Long> wordDocCounts = multiWC.countAllDocs();
 		
 		for (Map.Entry<String, Long> entry : wordDocCounts.entrySet()) {
