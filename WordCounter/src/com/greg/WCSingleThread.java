@@ -3,7 +3,7 @@ package com.greg;
 import java.util.HashMap;
 
 
-public class WordCountSingleThread {
+public class WCSingleThread {
 	private HashMap<String, Long> wordcount = new HashMap<String,Long>();
 	
 	public HashMap<String, Long> countSingleThread(String wordList) {

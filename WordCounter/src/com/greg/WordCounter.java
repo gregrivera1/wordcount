@@ -1,15 +1,28 @@
 package com.greg;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class WordCounter {
 	
 	public static void main(String args[]) {
-		WordCountSingleThread single = new WordCountSingleThread();
+		WCSingleThread single = new WCSingleThread();
+
 		single.countSingleThread("hi hi hi hello hello hi");
+		List<String> wordDocsList = new ArrayList<String>();
 		
-		HashMap<String,Long> singleWC = single.getWordCountMap();
-		for (Map.Entry<String, Long> entry : singleWC.entrySet()) {
+		wordDocsList.add("hi hi hi hi h a b c d asdf adsf adsf asdf asf asdf asf adf ad fa f as fasf sf dfa dfa dfadfa df as fa fa s fs fa df ad fadsf d fs f");
+		wordDocsList.add("he he he he");
+		wordDocsList.add("ha ha ha ha");
+		wordDocsList.add("ho ho ho ho");
+		wordDocsList.add("hi hi hi hi");
+		
+		WCMultiThread  multiWC  = new WCMultiThread(wordDocsList);
+		System.out.println("Starting");
+		System.out.println("DONE");
+		ConcurrentHashMap<String,Long> wordDocCounts = multiWC.countAllDocs();
+		
+		for (Map.Entry<String, Long> entry : wordDocCounts.entrySet()) {
 			System.out.println(entry.getKey() + ", " + entry.getValue());
 		}
 	}
